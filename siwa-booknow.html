@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">SKYLINE TRAVELS</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="project.html">Home</a></li>
+                <li><a href="project.html#topDest">Destinations</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="login-button">Login</a>
+            <a href="signup.html" class="signup-button">
+                <img src="./images/crown.png" alt="Crown Icon" class="crown-icon">
+                Signup
+            </a>
+        </div>
+    </header>
+
+    <div class="BOOKNOW">Book Now</div>
+    <div class="container-booking">
+        <form id="bookingFormBooking">
+            <div class="input-wrapper-booking">
+                <input type="text" id="fullNameBooking" name="fullNameBooking" placeholder=" " required>
+                <label for="fullNameBooking">Full Name</label>
+            </div>
+
+            <div class="input-wrapper-booking">
+                <input type="email" id="emailBooking" name="emailBooking" placeholder=" " required>
+                <label for="emailBooking">Email</label>
+            </div>
+
+            <label for="numberOfPeopleBooking">Number of People</label>
+            <input type="number" id="numberOfPeopleBooking" name="numberOfPeopleBooking" min="1" max="20" required>
+
+            <div class="travel-agent-selection">
+                <h3>Select Your Travel Agent</h3>
+                <div class="agent-box-container">
+                    <label class="agent-box" for="agentMona">
+                        <input type="radio" id="agentMona" name="travelAgent" value="Mona Ahmed" data-price="3599"
+                            data-date="2024-12-24" data-email="mona@skyline.com" data-phone="123456789" required>
+                        <div class="agent-details">
+                            <img src="./images/agent6.jpg" alt="Mona Ahmed">
+                            <div class="agent-info">
+                                <h4>Mona Ahmed</h4>
+                                <p>Price: 3599 EG</p>
+                                <p>Date: January 7, 2025</p>
+                            </div>
+                        </div>
+                    </label>
+                    <label class="agent-box" for="agentKhaled">
+                        <input type="radio" id="agentKhaled" name="travelAgent" value="Khaled El-Sayed"
+                            data-price="3599" data-date="2024-12-25" data-email="khaled@skyline.com"
+                            data-phone="987654321" required>
+                        <div class="agent-details">
+                            <img src="./images/agent5.jpeg" alt="Khaled El-Sayed">
+                            <div class="agent-info">
+                                <h4>Khaled El-Sayed</h4>
+                                <p>Price: 5299 EG</p>
+                                <p>Date: January 1, 2025</p>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <label for="paymentStatusBooking">Payment Status</label>
+            <select id="paymentStatusBooking" name="paymentStatusBooking" required>
+                <option value="creditCard">Credit Card</option>
+                <option value="cash">Cash</option>
+            </select>
+
+            <!-- Total Price and Submit button container -->
+            <div class="total-price-submit-container">
+                <div class="total-price-booking" id="totalPriceBooking">Total Price: EG 0</div>
+                <button type="submit" class="submitBooking">Confirm Booking</button>
+            </div>
+
+            <div class="cart-icon" id="cartIcon">
+                <img src="./images/cart-icon.png" alt="Cart" class="img-cart">
+                <!-- Tooltip showing booking details -->
+                <div class="cart-tooltip" id="cartTooltip">
+                    <h4>Booking Details</h4>
+                    <p id="customerName"><b>Name:</b> </p>
+                    <p id="customerEmail"><b>Email:</b> </p>
+                    <p id="numPeople"><b>Number of People:</b> </p>
+                    <p id="selectedAgent"><b>Agent:</b> </p>
+                    <p id="agentPrice"><b>Price:</b> </p>
+                    <p id="agentNumber"><b>Agent Phone:</b> </p>
+                    <p id="agentEmail"><b>Agent Email:</b> </p>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                        <img src="./images/pngegg.png" alt="Facebook">
+                    </a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                        <img src="./images/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                        <img src="./images/insta.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Skyline Travels. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("bookingFormBooking");
+            const cartTooltip = document.getElementById("cartTooltip");
+
+            form.addEventListener("change", updateCartDetails);
+
+            function updateCartDetails() {
+                const customerName = document.getElementById("fullNameBooking").value;
+                const customerEmail = document.getElementById("emailBooking").value;
+                const numPeople = document.getElementById("numberOfPeopleBooking").value;
+
+                const selectedAgent = document.querySelector('input[name="travelAgent"]:checked');
+                if (selectedAgent) {
+                    const agentName = selectedAgent.value;
+                    const agentPrice = selectedAgent.getAttribute("data-price");
+                    const agentNumber = selectedAgent.getAttribute("data-phone");
+                    const agentEmail = selectedAgent.getAttribute("data-email");
+
+                    // Use innerHTML to insert bold tags for labels
+                    document.getElementById("customerName").innerHTML = `<b>Name:</b> ${customerName}`;
+                    document.getElementById("customerEmail").innerHTML = `<b>Email:</b> ${customerEmail}`;
+                    document.getElementById("numPeople").innerHTML = `<b>Number of People:</b> ${numPeople}`;
+                    document.getElementById("selectedAgent").innerHTML = `<b>Agent:</b> ${agentName}`;
+                    document.getElementById("agentPrice").innerHTML = `<b>Price:</b> EG ${agentPrice}`;
+                    document.getElementById("agentNumber").innerHTML = `<b>Agent Phone:</b> ${agentNumber}`;
+                    document.getElementById("agentEmail").innerHTML = `<b>Agent Email:</b> ${agentEmail}`;
+                }
+            }
+        });
+
+        const agentBoxes = document.querySelectorAll('.agent-box');
+
+        agentBoxes.forEach(box => {
+            box.addEventListener('click', () => {
+                // Remove the 'selected' class from all boxes
+                agentBoxes.forEach(b => b.classList.remove('selected'));
+
+                // Add the 'selected' class to the clicked box
+                box.classList.add('selected');
+            });
+        });
+
+        const numberOfPeopleInputBooking = document.getElementById('numberOfPeopleBooking');
+        const totalPriceElementBooking = document.getElementById('totalPriceBooking');
+        const agentOptions = document.querySelectorAll('input[name="travelAgent"]');
+
+        function calculateTotalPriceBooking() {
+            const numberOfPeopleBooking = parseInt(numberOfPeopleInputBooking.value) || 0;
+            const selectedAgent = document.querySelector('input[name="travelAgent"]:checked');
+            const agentPrice = selectedAgent ? parseInt(selectedAgent.dataset.price) : 0;
+            const totalPriceBooking = agentPrice * numberOfPeopleBooking;
+
+            totalPriceElementBooking.textContent = `Total Price: EG ${totalPriceBooking}`;
+        }
+
+        numberOfPeopleInputBooking.addEventListener('input', calculateTotalPriceBooking);
+        agentOptions.forEach(option => option.addEventListener('change', calculateTotalPriceBooking));
+
+        // Initialize the total price display
+        calculateTotalPriceBooking();
+    </script>
+
+</body>
+
+</html>

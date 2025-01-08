@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siwa - Skyline Travels</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">SKYLINE TRAVELS</div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="project.html">Home</a></li>
+                <li><a href="project.html#topDest">Destinations</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="login.html" class="login-button">Login</a>
+            <a href="signup.html" class="signup-button">
+                <img src="./images/crown.png" alt="Crown Icon" class="crown-icon">
+                Signup
+            </a>
+        </div>
+    </header>
+
+    <main class="trip-details">
+        <div class="details-hero">
+            <h1>Oasis of Serenity: A Siwa Oasis Adventure</h1>
+            <p>
+
+                Escape the hustle and bustle of city life and immerse yourself in the tranquility of the Siwa Oasis.
+                Discover a hidden gem in the heart of the Western Desert, where ancient traditions and stunning
+                landscapes converge. Explore the sacred Mountain of the Dead, relax in natural hot springs, and
+                experience the warm hospitality of the Siwa people. This unique destination offers a truly unforgettable
+                experience.
+
+
+            </p>
+        </div>
+
+        <section class="details-highlights">
+            <h2>Trip Highlights</h2>
+            <div class="highlights-carousel">
+                <button class="carousel-btn prev-btn">&#8249;</button>
+                <div class="carousel-track-container">
+                    <ul class="carousel-track">
+                        <li class="carousel-slide"><img src="./images/siwa1.jpg" alt="img1"></li>
+                        <li class="carousel-slide"><img src="./images/siwa2.jpg" alt="img2"></li>
+                        <li class="carousel-slide"><img src="./images/siwa3.jpeg" alt="img3"></li>
+                        <li class="carousel-slide"><img src="./images/siwa4.jpeg" alt="img3"></li>
+                        <li class="carousel-slide"><img src="./images/siwa5.webp" alt="img5"></li>
+                    </ul>
+                </div>
+                <button class="carousel-btn next-btn">&#8250;</button>
+            </div>
+        </section>
+
+
+        <section class="details-info">
+            <h2>Details</h2>
+            <ul>
+                <li><strong>Duration:</strong> 3 Days / 2 Nights</li>
+                <li><strong>Location:</strong> Siwa Oasis, Egypt</li>
+                <li><strong>Activities:</strong> Historical tours, hot springs, desert safari</li>
+                <li><strong>Accommodations:</strong> Luxury eco-lodges</li>
+            </ul>
+        </section>
+
+        <section class="details-itinerary">
+            <h2>Itinerary</h2>
+            <p><strong>Day 1:</strong> Arrival, Temple of Amun, and Cleopatra's Spring</p>
+            <p><strong>Day 2:</strong> Sand dunes safari and Salt Lakes</p>
+            <p><strong>Day 3:</strong> Explore the Old Town of Siwa and departure</p>
+        </section>
+
+        <section class="details-pricing">
+            <h2>Pricing</h2>
+            <p>Starting from <strong>3,400 EG per person</strong>.</p>
+        </section>
+
+        <div class="details-booking">
+            <button class="book-now" onclick="location.href='siwa-booknow.html'">Book Now</button>
+        </div>
+    </main>
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                        <img src="./images/pngegg.png" alt="Facebook">
+                    </a>
+                    <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                        <img src="./images/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                        <img src="./images/insta.png" alt="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2024 Skyline Travels. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+
+
+
+    <!-- // button highlights siwa details -->
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const slides = Array.from(track.children);
+        const prevButton = document.querySelector('.prev-btn');
+        const nextButton = document.querySelector('.next-btn');
+        const slideWidth = slides[0].getBoundingClientRect().width + 16;
+
+        let currentIndex = 0;
+
+        const moveToSlide = (index) => {
+            track.style.transform = `translateX(-${index * slideWidth}px)`;
+        };
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < slides.length - 3) {
+                currentIndex++;
+                moveToSlide(currentIndex);
+            }
+        });
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                moveToSlide(currentIndex);
+            }
+        });
+    </script>
+
+</body>
+
+</html>
